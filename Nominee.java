@@ -1,5 +1,3 @@
-package first;
-
 public class Nominee {
 	private int nomId;
 	private String nomName;
@@ -43,6 +41,10 @@ public class Nominee {
 
 	public void setNomAge(int nomAge) {
 		this.nomAge = nomAge;
+	}
+	
+	public int getNomId() {
+		return nomId;
 	}
 
 	@Override
