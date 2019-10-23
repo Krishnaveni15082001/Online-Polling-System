@@ -1,5 +1,3 @@
-package first;
-
 public class Voter {
 	private int voterId;
 	private String voterName;
@@ -7,6 +5,7 @@ public class Voter {
 	//private final int castedVote;
 	private int vote;
 	private String password;
+	private int cmVote = 0, pmVote = 0, presiVote = 0;
 	
 	static int counter = 1000;
 
@@ -60,6 +59,18 @@ public class Voter {
 
 	public static int getCounter() {
 		return counter;
+	}
+	
+	public void setCmVote(int cmVote) {
+		this.cmVote = cmVote;
+	}
+
+	public void setPmVote(int pmVote) {
+		this.pmVote = pmVote;
+	}
+
+	public void setPresiVote(int presiVote) {
+		this.presiVote = presiVote;
 	}
 
 	@Override
