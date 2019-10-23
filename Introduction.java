@@ -1,5 +1,3 @@
-package first;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,11 +5,13 @@ import java.util.Scanner;
 public class Introduction {
 
 	public static void main(String[] args) {
-		int ch, key = 0, toWork, vote, voterId, vAge;
+		int ch, key = 0, toWork, vote, voterId, vAge, choice;
 		String pass, pass1, pass2, vName, nPos;
 		boolean flag = false, check = false;
 		Scanner scan = new Scanner(System.in);
-		List<Nominee> nomList = new ArrayList<Nominee>();
+		List<Nominee> cmList = new ArrayList<Nominee>();
+		List<Nominee> pmList = new ArrayList<Nominee>();
+		List<Nominee> presiList = new ArrayList<Nominee>();
 		List<Voter> voterList = new ArrayList<Voter>();
 		
 		do {
@@ -49,61 +49,123 @@ public class Introduction {
 									
 									switch(key) {
 										case 1:
-											System.out.println("Enter Voter Id: ");
-											toWork = scan.nextInt();
-											for(Voter voter:voterList) {
-												if(voter.getVoterId() == toWork) {
-													System.out.println("Cast your vote to any one Nominee : ");
-													vote = scan.nextInt();
-													if(vote < (10000 + nomList.size()) && 10000 <= vote) {
-														voter.setVote(vote);
+											System.out.println("To whom are you willing to cast your vote?\n1 . President\n2 . Prime Minister\n3 . Chief Minister");
+											choice = scan.nextInt();
+											System.out.println("Enter respective id : ");
+											vote = scan.nextInt();
+											switch(choice) {
+												case 1:
+													for(Nominee nom : presiList) {
+														if(nom.getNomId() == vote) {
+															voter1.setPresiVote(vote);
+															System.out.println("Vote Casted!");
+															flag = true;
+														}
+													}
+													if(flag == false) {
+														System.out.println("President Id invalid!");
+														flag = true;
+													}
+													
+													System.out.println();
+													break;
+													
+												case 2:
+													if(vote < (10000 + pmList.size()) && 10000 <= vote) {
+														voter1.setPmVote(vote);
 														System.out.println("Vote Casted!");
 														flag = true;
-														//return;
-														break;
 													}
 													else {
-														System.out.println("Nominee Id invalid!");
+														System.out.println("Prime Minister Id invalid!");
 														flag = true;
 													}
+													
+													System.out.println();
+													break;
+													
+												case 3:
+													if(vote < (10000 + cmList.size()) && 10000 <= vote) {
+														voter1.setCmVote(vote);
+														System.out.println("Vote Casted!");
+														flag = true;
+													}
+													else {
+														System.out.println("Chief Minister Id invalid!");
+														flag = true;
+													}
+													
+													System.out.println();
+													break;
 												}
-											}
+											
 											if(flag == false) {
 												System.out.println("Voter Id Invalid!");
 											}
+											
 											System.out.println("");
 											break;
 											
 										case 2:
-											if(nomList.size() == 0) {
-												System.out.println("No nominees registered yet!");
-											}
-											else {
-												System.out.println("Nominee List: ");
-												for(Nominee nom:nomList) {
-													System.out.println(nom);
+											System.out.println("Nominee List for the following:\n1 . President\n2 . Prime Minister\n3 . Chief Minister");
+											choice = scan.nextInt();
+											switch(choice) {
+											
+												case 1:
+													if(presiList.size() == 0) {	
+														System.out.println("No nominees registered yet!");
+													}
+													else {
+														System.out.println("Nominee List: ");
+														for(Nominee nom:presiList) {
+															System.out.println(nom);
+														}
+													}
+													break;
+												
+												case 2:
+													if(pmList.size() == 0) {														
+														System.out.println("No nominees registered yet!");
+													}
+													else {
+														System.out.println("Nominee List: ");
+														for(Nominee nom:pmList) {
+															System.out.println(nom);
+														}
+													}
+													break;
+													
+												case 3:
+													if(cmList.size() == 0) {														
+														System.out.println("No nominees registered yet!");
+													}
+													else {
+														System.out.println("Nominee List: ");
+														for(Nominee nom:cmList) {
+															System.out.println(nom);
+														}
+													}
+													break;
 												}
-											}
 											System.out.println("");
 											break;
 											
 										case 3:
 											System.out.println("");
 											break;
-									}
-										
+									}										
 								}while(key < 3);
 							}
 							else {
 								System.out.println("Wrong Password!");
 							}
 						}
-					}
 					if(check == false) {
 						System.out.println("Voter not registered!");
 					}
 					System.out.println("");
 					break;
+					}
 					
 					
 				case 2:
@@ -153,20 +215,37 @@ public class Introduction {
 						case 2:
 							System.out.println("Enter Nominee Name: ");
 							vName = scan.next();
+							System.out.println("Available positions:\n1 . President\n2 . Prime Minister\n3 . Chief Minister");
 							System.out.println("Enter Desired position: ");
-							nPos = scan.next();
+							choice = scan.nextInt();
 							System.out.println("Enter Age: ");
 							vAge = scan.nextInt();
-							if(vAge > 20) {
-								Nominee nominee = new Nominee(vName, nPos, vAge);
-								nomList.add(nominee);
+							if(vAge >= 35) {
+								
+								Nominee nominee = new Nominee();
+								nominee.setNomName(vName);
+								nominee.setNomAge(vAge);
+								
+								switch(choice) {
+									case 1:
+										nominee.setNomPosition("President");
+										presiList.add(nominee);break;
+									case 2:
+										nominee.setNomPosition("Prime Minister");
+										pmList.add(nominee);break;
+									case 3:
+										nominee.setNomPosition("Chief Minister");
+										cmList.add(nominee);break;
+								}
+								
+								
 								System.out.println("Nominee added!");
 								System.out.println(nominee);
 							}
-							else {
-								System.out.println("Age should be above 20 years!");
-							}
 							
+							else {
+								System.out.println("Age should be above 35 years!");
+							}							
 							break;	
 							
 						case 3:
@@ -175,9 +254,8 @@ public class Introduction {
 					}
 					System.out.println("");
 					break;
+					
 			}
 		}while(ch < 3);
-
 	}
-
 }
