@@ -73,6 +73,18 @@ public class Voter {
 		this.presiVote = presiVote;
 	}
 
+	public int getCmVote() {
+		return cmVote;
+	}
+
+	public int getPmVote() {
+		return pmVote;
+	}
+
+	public int getPresiVote() {
+		return presiVote;
+	}
+
 	@Override
 	public String toString() {
 		return "Voter [Id=" + voterId + ", Name=" + voterName + ", Age=" + voterAge + "]";
