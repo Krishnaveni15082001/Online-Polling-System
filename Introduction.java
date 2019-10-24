@@ -42,7 +42,8 @@ public class Introduction {
 									
 									System.out.println("1 . Cast your vote. ");
 									System.out.println("2 . List of Nominees. ");
-									System.out.println("3 . Go back to main menu. ");
+									System.out.println("3 . Current results.");
+									System.out.println("4 . Go back to main menu. ");
 									System.out.println("Select any option: ");
 									
 									key = scan.nextInt();
@@ -55,10 +56,17 @@ public class Introduction {
 											vote = scan.nextInt();
 											switch(choice) {
 												case 1:
+													flag = false;
 													for(Nominee nom : presiList) {
 														if(nom.getNomId() == vote) {
-															voter1.setPresiVote(vote);
-															System.out.println("Vote Casted!");
+															if(voter1.getPresiVote() == 0) {
+																voter1.setPresiVote(vote);
+																System.out.println("Vote Casted!");
+															}
+															else {
+																System.out.println("Vote already casted for President!");
+															}
+															
 															flag = true;
 														}
 													}
@@ -71,12 +79,21 @@ public class Introduction {
 													break;
 													
 												case 2:
-													if(vote < (10000 + pmList.size()) && 10000 <= vote) {
-														voter1.setPmVote(vote);
-														System.out.println("Vote Casted!");
-														flag = true;
+													flag = false;
+													for(Nominee nom : pmList) {
+														if(nom.getNomId() == vote) {
+															if(voter1.getPmVote() == 0) {
+																voter1.setPmVote(vote);
+																System.out.println("Vote Casted!");
+															}
+															else {
+																System.out.println("Vote already casted for Prime Minister!");
+															}
+															
+															flag = true;
+														}
 													}
-													else {
+													if(flag == false) {
 														System.out.println("Prime Minister Id invalid!");
 														flag = true;
 													}
@@ -85,12 +102,21 @@ public class Introduction {
 													break;
 													
 												case 3:
-													if(vote < (10000 + cmList.size()) && 10000 <= vote) {
-														voter1.setCmVote(vote);
-														System.out.println("Vote Casted!");
-														flag = true;
+													flag = false;
+													for(Nominee nom : cmList) {
+														if(nom.getNomId() == vote) {
+															if(voter1.getCmVote() == 0) {
+																voter1.setCmVote(vote);
+																System.out.println("Vote Casted!");
+															}
+															else {
+																System.out.println("Vote already casted for Chief Minister!");
+															}
+															
+															flag = true;
+														}
 													}
-													else {
+													if(flag == false) {
 														System.out.println("Chief Minister Id invalid!");
 														flag = true;
 													}
@@ -151,10 +177,24 @@ public class Introduction {
 											break;
 											
 										case 3:
+											int pm = 0, cm = 0,pre = 0;
+											for(Nominee presi: presiList) {
+												pre = 0;
+												for(Voter voter2 : voterList) {
+													if(voter2.getPresiVote() == presi.getNomId()) {
+														pre++;
+													}
+												}
+												System.out.println("Number of votes for President with Id " + presi.getNomId() + " : " + pre);												
+											}
+											break;
+											
+											
+										case 4:
 											System.out.println("");
 											break;
 									}										
-								}while(key < 3);
+								}while(key < 4);
 							}
 							else {
 								System.out.println("Wrong Password!");
@@ -164,8 +204,9 @@ public class Introduction {
 						System.out.println("Voter not registered!");
 					}
 					System.out.println("");
-					break;
+					//break;
 					}
+					break;
 					
 					
 				case 2:
