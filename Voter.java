@@ -1,26 +1,28 @@
-public class Voter {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Voter implements Serializable{
 	private int voterId;
 	private String voterName;
 	private int voterAge;
-	//private final int castedVote;
 	private int vote;
 	private String password;
 	private int cmVote = 0, pmVote = 0, presiVote = 0;
 	
-	static int counter = 1000;
-
 	public Voter() {
 		super();
 	}	
 
-	public Voter(String voterName, int voterAge, String password) {
+	public Voter( String voterName, int voterAge, String password) {
 		super();
-		this.voterId = counter++;
 		this.voterAge = voterAge;
 		this.voterName = voterName;
 		this.password = password;
 	}
 	
+	public void setVoterId(int voterId) {
+		this.voterId = voterId;
+	}
 	public int getVoterId() {
 		return voterId;
 	}
@@ -57,10 +59,6 @@ public class Voter {
 		this.password = password;
 	}
 
-	public static int getCounter() {
-		return counter;
-	}
-	
 	public void setCmVote(int cmVote) {
 		this.cmVote = cmVote;
 	}
