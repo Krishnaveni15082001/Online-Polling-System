@@ -1,19 +1,21 @@
-public class Nominee {
+import java.io.Serializable;
+
+public class Nominee implements Serializable {
 	private int nomId;
 	private String nomName;
 	private String nomPosition;
 	private int nomAge;
 	
-	static int counter = 10000;
+	
 
 	public Nominee() {
 		super();
-		this.nomId = counter++;
+		
 	}
 
-	public Nominee(String nomName, String nomPosition, int nomAge) {
+	public Nominee(int nomId, String nomName, String nomPosition, int nomAge) {
 		super();
-		this.nomId = counter++;
+		this.nomId = nomId;
 		this.nomName = nomName;
 		this.nomPosition = nomPosition;
 		this.nomAge = nomAge;
@@ -43,6 +45,9 @@ public class Nominee {
 		this.nomAge = nomAge;
 	}
 	
+	public void setNomId(int nomId) {
+		this.nomId = nomId;
+	}
 	public int getNomId() {
 		return nomId;
 	}
