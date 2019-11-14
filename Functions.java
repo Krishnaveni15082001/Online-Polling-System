@@ -1,3 +1,5 @@
+package first;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -69,8 +71,12 @@ public class Functions {
 	
 	public void displayNomineeMenu() {
 		
-		System.out.println("Choose accordingly\n1. President\n2. Prime Minister\n3. Chief Minister");
+		System.out.println("Choose accordingly\n1. MLA\n2. MP");
 	
+	}
+	
+	public void displayStatesMenu() {
+		System.out.println("Choose accordingly\n1. Telangana\n2. Andhra Pradesh\n3. Maharashtra");
 	}
 	
 	public void displayLoginMenu() {
@@ -102,20 +108,47 @@ public class Functions {
 	
 	public void displayMainMenu() {
 		
-		System.out.println("Welcome to Online Poling System!\n");
+		System.out.println("Welcome to Internal Poling System!\n");
 		System.out.println("Enter 1 for login.");
 		System.out.println("Enter 2 for registering. ");
-		System.out.println("Enter 3 to exit!");
+		System.out.println("Enter 3 for admin login. ");
+		System.out.println("Enter 4 to exit!");
 	
 	}
 	
 	public void displayRegisterMenu() {
 		
 		System.out.println("1. Register as Voter");
-		System.out.println("2. Register as Nominee");
-		System.out.println("3. Go back to main menu");
+		System.out.println("2. Go back to main menu");
 		System.out.println("Select any option: ");
 	
 	}	
+	
+	public void adminLogin() throws ClassNotFoundException, IOException {
+		String id, pass;
+		Admin admin = new Admin();
+		
+		System.out.println("Enter Id: ");
+		id = scan.next();
+		System.out.println("Enter Password: ");
+		pass =scan.next();
+		
+		admin.adminLogin(id, pass);		
+	}
+	
+	public void adminLoginMenu() throws ClassNotFoundException, IOException {
+		int n;
+		Admin admin = new Admin();
+		Register register = new Register();
+		System.out.println("Choose accordingly\n1. Check results\n2. Add nominee\n3. Go back to main menu");
+		n = scan.nextInt();
+		
+		if(n == 1)
+			admin.checkResults();
+		else if(n == 2)
+			register.nomineeRegister();
+			
+			
+	}
 	
 }
