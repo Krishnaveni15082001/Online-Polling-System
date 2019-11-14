@@ -1,3 +1,5 @@
+package first;
+
 import java.io.Serializable;
 
 public class Nominee implements Serializable {
@@ -5,7 +7,7 @@ public class Nominee implements Serializable {
 	private String nomName;
 	private String nomPosition;
 	private int nomAge;
-	
+	private String nomState;	
 	
 
 	public Nominee() {
@@ -13,12 +15,13 @@ public class Nominee implements Serializable {
 		
 	}
 
-	public Nominee(int nomId, String nomName, String nomPosition, int nomAge) {
+	public Nominee(int nomId, String nomName, String nomPosition, int nomAge, String nomState) {
 		super();
 		this.nomId = nomId;
 		this.nomName = nomName;
 		this.nomPosition = nomPosition;
 		this.nomAge = nomAge;
+		this.nomState = nomState;
 	}
 
 	public String getNomName() {
@@ -51,10 +54,21 @@ public class Nominee implements Serializable {
 	public int getNomId() {
 		return nomId;
 	}
+	
+
+	protected String getNomState() {
+		return nomState;
+	}
+
+	protected void setNomState(String nomState) {
+		this.nomState = nomState;
+	}
 
 	@Override
 	public String toString() {
-		return "Nominee [ Id=" + nomId + ", Name=" + nomName + ", Position=" + nomPosition + "]";
+		return "[Id:" + nomId + ", Name:" + nomName + ", Position:" + nomPosition + ", State:" + nomState + "]";
 	}
+
+	
 
 }
