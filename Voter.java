@@ -1,3 +1,5 @@
+package first;
+
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
@@ -86,6 +88,7 @@ public class Voter implements Serializable{
 	@Override
 	public String toString() {
 		return "Voter [Id=" + voterId + ", Name=" + voterName + ", Age=" + voterAge + "]";
-	}    
+	} 
+	
 	
 }
