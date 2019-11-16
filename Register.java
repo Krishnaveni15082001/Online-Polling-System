@@ -12,14 +12,18 @@ import java.util.Scanner;
 import first.Functions.ageNotValid;
 import first.Functions.passwordStrength;
 
-public class Register {
+public class Register extends Nominee{
 
 	Scanner scan = new Scanner(System.in);
 	Functions functions = new Functions();
 	int choice, key;
+	
+	
 
 	@SuppressWarnings("unchecked")
 	public void voterRegister() throws IOException {
+		
+		
 
 		List<Voter> voterList = new ArrayList<Voter>();
 		String voterName, pass1, pass2;
@@ -84,7 +88,7 @@ public class Register {
 		fileOutputStream.close();
 	}
 
-
+    
 
 	@SuppressWarnings("unchecked")
 	public void nomineeRegister() throws IOException {
@@ -123,6 +127,7 @@ public class Register {
 
 		FileOutputStream fileOutputStream  = new FileOutputStream("Nominee.txt");
 		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+		
 		do {
 			System.out.println("Enter Nominee Name: ");
 			nomineeName = scan.next();
@@ -149,17 +154,67 @@ public class Register {
 				
 				}//switch
 				
+				
+				
 				functions.displayStatesMenu();
 				choice = scan.nextInt();
 				
 				switch(choice) {
 				case 1:
-					nominee.setNomState("Telangana");break;
-				case 2:
-					nominee.setNomState("Andhra Pradesh");break;
+					nominee.setNomState("Telangana");
+					System.out.println("Choose accordingly\n1. Khammam\n2. Medak\n3. Ranga Reddy");
+				    int choice = scan.nextInt();
+					switch(choice) {
+					case 1:
+					nominee.setNomTelanganaDistrict("Khammam");
+					break;
+					
+				    case 2:
+				    	nominee.setNomTelanganaDistrict("Medak");
+					    break;
 				case 3:
-					nominee.setNomState("Maharashtra");break;
-				}
+					    nominee.setNomTelanganaDistrict("Ranga Reddy");
+					    break;
+				}//switch
+					break;
+					
+				case 2:
+					nominee.setNomState("Andhra Pradesh");
+					System.out.println("Choose accordingly\n1. Guntur\n2. Nellore\n3. Anantapur");
+					int choice1 = scan.nextInt();
+					switch(choice1) {
+					case 1:
+						nominee.setNomAndhraDistrict("Guntur");
+						break;
+						
+					case 2:
+						nominee.setNomAndhraDistrict("Nellore");
+						break;
+					case 3:
+						nominee.setNomAndhraDistrict("Ananthapur");
+						break;
+						}//switch
+					break;
+				
+				case 3:
+					nominee.setNomState("Maharashtra");
+					System.out.println("Choose accordingly\n1. Nagpur\n2. Pune\n3. Satara");
+					int choice2 = scan.nextInt();
+					switch(choice2) {
+					case 1:
+						nominee.setNomMaharastraDistrict("Nagpur");
+						break;
+						
+					case 2:
+						nominee.setNomMaharastraDistrict("Pune");
+						break;
+					case 3:
+						nominee.setNomMaharastraDistrict("Satara");
+						break;
+					}//switch
+					break;
+				}//switch
+				
 
 				int id = 0;
 				if(nomineeList1.isEmpty()) {
@@ -189,7 +244,7 @@ public class Register {
 		objectInputStream.close();
 		objectOutputStream.close();
 		fileOutputStream.close();
-	}
+		}
 }
 
 
