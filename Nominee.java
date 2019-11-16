@@ -2,12 +2,18 @@ package first;
 
 import java.io.Serializable;
 
+import first.Functions.ageNotValid;
+
+@SuppressWarnings("serial")
 public class Nominee implements Serializable {
 	private int nomId;
 	private String nomName;
 	private String nomPosition;
 	private int nomAge;
-	private String nomState;	
+	private String nomState;
+	private String nomTelanganaDistrict;
+	private String nomAndhraDistrict;
+	private String nomMaharastraDistrict;
 	
 
 	public Nominee() {
@@ -15,13 +21,16 @@ public class Nominee implements Serializable {
 		
 	}
 
-	public Nominee(int nomId, String nomName, String nomPosition, int nomAge, String nomState) {
+	public Nominee(int nomId, String nomName, String nomPosition, int nomAge, String nomState, String nomTelanganaDistrict, String nomAndhraDistrict, String nomMaharastraDistrict) {
 		super();
 		this.nomId = nomId;
 		this.nomName = nomName;
 		this.nomPosition = nomPosition;
 		this.nomAge = nomAge;
 		this.nomState = nomState;
+		this.nomTelanganaDistrict = nomTelanganaDistrict;
+		this.nomAndhraDistrict = nomAndhraDistrict;
+		this.nomMaharastraDistrict = nomMaharastraDistrict;
 	}
 
 	public String getNomName() {
@@ -63,12 +72,40 @@ public class Nominee implements Serializable {
 	protected void setNomState(String nomState) {
 		this.nomState = nomState;
 	}
+	protected String getNomTelanganaDistrict() {
+		return nomTelanganaDistrict;
+	}
+
+	protected void setNomTelanganaDistrict(String nomTelanganaDistrict) {
+		this.nomTelanganaDistrict = nomTelanganaDistrict;
+	}
+	protected String getNomAndhraDistrict() {
+		return nomAndhraDistrict;
+	}
+
+	protected void setNomAndhraDistrict(String nomAndhraDistrict) {
+		this.nomAndhraDistrict = nomAndhraDistrict;
+	}
+	protected String getNomMaharastraDistrict() {
+		return nomMaharastraDistrict;
+	}
+
+	protected void setNomMaharastraDistrict(String nomMaharastraDistrict) {
+		this.nomMaharastraDistrict = nomMaharastraDistrict;
+	}
+	
 
 	@Override
 	public String toString() {
-		return "[Id:" + nomId + ", Name:" + nomName + ", Position:" + nomPosition + ", State:" + nomState + "]";
+		
+		return "Nominee [Id=" + nomId + ", Name=" + nomName + ", Position=" + nomPosition + ", Age="
+				+ nomAge + ", State=" + nomState + ", Telangana District=" + nomTelanganaDistrict
+				+ ", Andhra District=" + nomAndhraDistrict + ", Maharastra District=" + nomMaharastraDistrict + "]";
 	}
-
-	
-
 }
+
+
+
+
+
+
