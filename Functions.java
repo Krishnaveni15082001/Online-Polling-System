@@ -1,6 +1,7 @@
 package first;
 
 import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,7 +15,7 @@ import first.Functions.ageNotValid;
 import first.Functions.passwordStrength;
 
 @SuppressWarnings("unused")
-public class Functions {
+public class Functions  {
 	Scanner scan = new Scanner(System.in);
 	Nominee nominee = null;
 	
@@ -61,6 +62,7 @@ public class Functions {
 		}
 	}
 	
+
 	public boolean voterRegistration(Voter voter) throws voterRegister{
 		
 		if(voter == null) {
@@ -78,6 +80,18 @@ public class Functions {
 	public void displayStatesMenu() {
 		System.out.println("Choose accordingly\n1. Telangana\n2. Andhra Pradesh\n3. Maharashtra");
 	}
+	public void displayTelanganaDistrictMenu() {
+		System.out.println("Choose accordingly\n1. Khammam\n2. Medak\n3. Ranga Reddy");
+	}
+	public void displayAndhraDistrictMenu() {
+		System.out.println("Choose accordingly\n1. Guntur\n2. Nellore\n3. Anantapur");
+	}
+	public void displayMaharastraDistrictMenu() {
+		System.out.println("Choose accordingly\n1. Nagpur\n2. Pune\n3. Satara");
+	}
+	
+	
+
 	
 	public void displayLoginMenu() {
 		
@@ -108,7 +122,7 @@ public class Functions {
 	
 	public void displayMainMenu() {
 		
-		System.out.println("Welcome to Internal Poling System!\n");
+		System.out.println("Welcome to Online Poling System!\n");
 		System.out.println("Enter 1 for login.");
 		System.out.println("Enter 2 for registering. ");
 		System.out.println("Enter 3 for admin login. ");
