@@ -52,14 +52,14 @@ public class Admin{
 					if(voter.getPresiVote() == nominee.getNomId())
 						t = t + 1;
 				}
-				System.out.println("Number of voter for Nominee "+ nominee.getNomId() + " ( " + nominee.getNomPosition() + "): " + t );
+				System.out.println("Number of votes for Nominee "+ nominee.getNomId() + " ( " + nominee.getNomPosition() + " " + nominee.getNomState() +"): " + t );
 			}
 			else if(nominee.getNomPosition().equals("MP")) {
 				for(Voter voter : voterList) {
 					if(voter.getPmVote() == nominee.getNomId())
 						t = t + 1;
 				}
-				System.out.println("Number of voter for Nominee "+ nominee.getNomId() + " (" + nominee.getNomPosition() + "): " + t );				
+				System.out.println("Number of votes for Nominee "+ nominee.getNomId() + " (" + nominee.getNomPosition() + " " + nominee.getNomState() + "): " + t );				
 			}
 			/*else if(nominee.getNomPosition().equals("Chief Minister")) {
 				for(Voter voter : voterList) {
